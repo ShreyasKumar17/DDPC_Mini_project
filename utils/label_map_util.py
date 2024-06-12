@@ -24,7 +24,7 @@ from six import string_types
 from six.moves import range
 import tensorflow as tf
 from google.protobuf import text_format
-from protos import string_int_label_map_pb2
+from object_detection.protos import string_int_label_map_pb2
 
 
 def _validate_label_map(label_map):
@@ -135,7 +135,7 @@ def load_labelmap(path):
   Returns:
     a StringIntLabelMapProto
   """
-  with tf.io.gfile.GFile(path, 'r') as fid:
+  with tf.gfile.GFile(path, 'r') as fid:
     label_map_string = fid.read()
     label_map = string_int_label_map_pb2.StringIntLabelMap()
     try:
